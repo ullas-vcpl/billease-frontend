@@ -20,7 +20,8 @@ function App() {
                 <Routes>
                 //send login state to routes if needed
                 <Route path="/login" element={<Login login={login} setLogin={setLogin} user={user} setUser={setUser} />} />
-                <Route path="/" element={<Dashboard login={login} setLogin={setLogin} user={user} setUser={setUser} />} />
+                {/* <Route path="/" element={<Dashboard login={login} setLogin={setLogin} user={user} setUser={setUser} />} /> */}
+                <Route path="/" element={<Login login={login} setLogin={setLogin} user={user} setUser={setUser} />} />
                 <Route path="/billing" element={<Billing login={login} setLogin={setLogin} />} />
                 <Route path="/products" element={<Products login={login} setLogin={setLogin} />} />
                 <Route path="/customers" element={<Customers login={login} setLogin={setLogin} />} />
