@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
     LineChart,
     Line,
@@ -12,12 +13,13 @@ import {
 import api from "../services/api";
 
 function Dashboard({login}) {
+    const navigate = useNavigate();
     useEffect(() => {
         if (!login) {
             // Redirect to login page or handle unauthorized access
-            window.location.href = "/login";
+            navigate("/login");
         }
-    }, [login]);
+    }, [login, navigate]);
     const [summary, setSummary] = useState({
         todaySales: 0,
         todayBills: 0,
