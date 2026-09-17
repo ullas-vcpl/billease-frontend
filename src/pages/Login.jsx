@@ -3,10 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import api from "../services/api";
 
-function Login({login,setLogin}) {
+function Login({login,setLogin,user,setUser}) {
     const navigate = useNavigate();
 
     const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const [formData, setFormData] = useState({
         email: "",
@@ -20,19 +21,50 @@ function Login({login,setLogin}) {
         });
     };
 
+     if (loading) {
+
+        return (
+
+            <div className="
+                min-h-[80vh]
+                flex
+                items-center
+                justify-center
+                w-full
+            ">
+
+                <div className="
+                    w-10
+                    h-10
+                    border-4
+                    border-gray-300
+                    border-t-blue-600
+                    rounded-full
+                    animate-spin
+                " />
+
+            </div>
+
+        );
+
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            const user = await api.post("/login", formData, {withCredentials: true});
+            setLoading(true);
+            const response = await api.post("/login", formData, {withCredentials: true});
             setLogin(true);
-            console.log(user);
-            console.log(formData);
+            setUser(response.data.user.name);
+            console.log(response.data.user.name);
             // go to dashboard page after login
             navigate("/dashboard"); // assuming you have a route for the dashboard and have imported useNavigate from react-router-dom
         } catch (error) {
             // Handle login error here, e.g., show an error message to the user
             alert("Login failed: " + (error.response?.data?.message || error.message));
             console.error("Login failed:", error);
+        } finally {
+            setLoading(false);
         }
     };
 

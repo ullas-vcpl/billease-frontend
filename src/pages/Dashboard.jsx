@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
     LineChart,
     Line,
@@ -12,7 +13,7 @@ import {
 
 import api from "../services/api";
 
-function Dashboard({login}) {
+function Dashboard({login,user}) {
     const navigate = useNavigate();
     useEffect(() => {
         if (!login) {
@@ -73,6 +74,7 @@ function Dashboard({login}) {
                 setSalesData(salesResponse.data);
 
                 setRecentBills(billsResponse.data);
+                console.log("Recent bills:", billsResponse.data);
 
             } catch (error) {
 
@@ -112,6 +114,7 @@ function Dashboard({login}) {
                 flex
                 items-center
                 justify-center
+                w-full
             ">
 
                 <div className="
@@ -186,7 +189,7 @@ function Dashboard({login}) {
                     font-bold
                     text-gray-800
                 ">
-                    Dashboard
+                    Welcome, {user}
                 </h1>
 
                 <p className="
@@ -760,7 +763,7 @@ function Dashboard({login}) {
                                         ">
                                             ₹
                                             {Number(
-                                                bill.totalAmount || 0
+                                                bill.amount || 0
                                             ).toLocaleString("en-IN")}
                                         </td>
 
