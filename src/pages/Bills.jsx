@@ -14,13 +14,13 @@ const Bills = ({login}) => {
     }, [login, navigate]);
 
   const handlePrint = (billId) => {
-    console.log("Print bill:", billId);
+    navigate(`/bills/${billId}?action=print`);
 
     // Later we will open a printable invoice page
   };
 
   const handleDownload = (billId) => {
-    console.log("Download bill:", billId);
+    navigate(`/bills/${billId}?action=download`);
 
     // Later we will generate/download the PDF
   };

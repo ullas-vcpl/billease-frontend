@@ -62,7 +62,7 @@ function Navbar({ login, setLogin, user }) {
                         <Link to="/bills" className="text-white hover:text-blue-600">
                             Bills
                         </Link>
-                        <Link to="/profile" className="text-white hover:text-blue-600">
+                        <Link to="/customers" className="text-white hover:text-blue-600">
                             Customers
                         </Link>
                        
