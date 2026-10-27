@@ -1145,7 +1145,7 @@ const Billing = ({login}) => {
 
                         {/* CART ITEMS */}
 
-                        <div className="max-h-[420px] overflow-y-auto">
+                        <div className="max-h-105 overflow-y-auto">
 
                             {cart.length ===
                             0 ? (
